@@ -17,7 +17,7 @@
     "react-speech-recognition": "^3.10.0",
     "web-vitals": "^2.1.4"
   },
-  "proxy": "https://testpro-jj9i.onrender.com",
+  "proxy": "https://testpro-gbn5.onrender.com",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

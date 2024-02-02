@@ -4,18 +4,18 @@ import axios from "axios";
 class testService{
 
     async searchStay(key){
-        return await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?serviceKey=${key}&numOfRows=30&MobileOS=WIN&_type=json&MobileApp=test&listYN=Y&keyword=경복궁 창동`)
+        return await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?serviceKey=${key}&numOfRows=30&MobileOS=WIN&_type=json&MobileApp=test&listYN=Y&keyword=경복궁`)
                 .then((res) => {
                     console.log(res.data.response.body.items.item)
                 })
     }
 
     nodetest(){
-        return axios.post(`/api/nodetest`,{title: "fffff"})
+        return axios.post(`https://testpro-gbn5.onrender.com/api/nodetest`,{title: "fffff"})
     }
 
     async login(setToken,data){
-        return await axios.post(`/api/login`, data)
+        return await axios.post(`https://testpro-gbn5.onrender.com/api/login`, data)
                 .then((res) => {
                     console.log(res.data.token)
                     setToken(res.data.token)
@@ -24,7 +24,7 @@ class testService{
 
     async auth(option){
         try{
-            return await axios.get(`/api/auth`,option)
+            return await axios.get(`https://testpro-gbn5.onrender.com/api/auth`,option)
                 .then((res) => {
                     console.log(res)
                 })
@@ -54,7 +54,7 @@ class testService{
     }
 
     async register(data) {
-        return await axios.post(`/api/register`,data)
+        return await axios.post(`https://testpro-gbn5.onrender.com/api/register`,data)
             .then((res) => {
                 console.log(res)
             })
