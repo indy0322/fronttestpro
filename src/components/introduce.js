@@ -45,31 +45,59 @@ function Introduce() {
 
     return(
         <div>
-            <div style={{height:"100vh",width:"100vw",bottom:"0",position:"fixed"}}>
-                
-                <figure className="image is-1by1" style={{height:"40vh"}}>
+            <div className="imageContainer" style={{height:"40vh",width:"100vw",top:"0",position:"fixed"}}>         
+                <figure className="image" style={{height:"40vh"}}>
                     <img style={{width:"100vw", height:"40vh",top:"0",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>
                 </figure>
                 <span className="heartBtn heartFull" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>❤️</span>
-                
-                <div className="columns">
-                    <div className="column is-primary">
-                        First column
+            </div>
+            <div className="contentsContainer" style={{backgroundColor:"purple",top:"40vh", position:"fixed", textAlign:"center", width:"100vw", height:"40vh"}}>
+                <button className="button is-dark">버튼</button>
+                <p>내용</p>
+                <div className="dropdown">
+                    <div className="dropdown-trigger">
+                        <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Click me</span>
+                        <span className="icon is-small">
+                            <i className="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                        </button>
                     </div>
-                    <div className="column">
-                        Second column
-                    </div>
-                    <div className="column">
-                        Third column
-                    </div>
-                    <div className="column">
-                        Fourth column
+                    <div className="dropdown-menu" id="dropdown-menu3" role="menu">
+                        <div className="dropdown-content">
+                            <a href="#" className="dropdown-item">
+                                Overview
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Modifiers
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Grid
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Form
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Elements
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Components
+                            </a>
+                            <a href="#" className="dropdown-item">
+                                Layout
+                            </a>
+                            <hr className="dropdown-divider"/>
+                            <a href="#" className="dropdown-item">
+                                More
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div className="reviewContainer close" style={{height:"13vh",width:"100vw",backgroundColor: "rgba(0,0,0,0)",bottom:"0",position:"fixed", transition: "height 0.5s"}}>
                 <button className="btn open button is-light" style={{color:"red", height:"3vh"}} onClick={onOpenClose}>open</button>
-                <div className="review" style={{backgroundColor:"yellow",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", scrollSnapType:"y mandatory"}}>
+                <div className="review" style={{backgroundColor:"yellow",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
                     <div className="box">
                         I'm in a box.
                     </div>

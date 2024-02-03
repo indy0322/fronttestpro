@@ -37,9 +37,10 @@ function Test() {
     
 
     useEffect(async () => {
+        console.log(`${process.env.REACT_APP_KEY}`)
         const key = `Ptb926c0Feu4UG1IH76IjAHxpnG8psQyzx7amXPbEX0CFKUJiig7K7lmGsBiv0HaZnNsVAlOx5Bkxk51BMPlFQ%3D%3D`
 
-        const googleKey = `AIzaSyC3WkfRj6nDrKJTCQ6xgxh7ZzTwpx24xFI`
+        const gKey = `AIzaSyC3WkfRj6nDrKJTCQ6xgxh7ZzTwpx24xFI`
         /*await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${googleKey}&target=ja&q=안녕하세요`)
             .then((res) => {
                 console.log(res.data.data.translations[0].translatedText)
