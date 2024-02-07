@@ -11,11 +11,11 @@ class testService{
     }
 
     nodetest(){
-        return axios.post(`https://testpro-gbn5.onrender.com/api/nodetest`,{title: "fffff"})
+        return axios.post(`https://testpro-uktu.onrender.com/api/nodetest`,{title: "fffff"})
     }
 
     async login(setToken,data){
-        return await axios.post(`https://testpro-gbn5.onrender.com/api/login`, data)
+        return await axios.post(`https://testpro-uktu.onrender.com/api/login`, data)
                 .then((res) => {
                     console.log(res.data.token)
                     setToken(res.data.token)
@@ -24,12 +24,13 @@ class testService{
 
     async auth(option){
         try{
-            return await axios.get(`https://testpro-gbn5.onrender.com/api/auth`,option)
+            return await axios.get(`https://testpro-uktu.onrender.com/api/auth`,option)
                 .then((res) => {
                     console.log(res)
                 })
         }
         catch(err){
+            
             if(err.response.data.code == '401'){
                 console.log(err.response.data.message)
             }
@@ -54,7 +55,7 @@ class testService{
     }
 
     async register(data) {
-        return await axios.post(`https://testpro-gbn5.onrender.com/api/register`,data)
+        return await axios.post(`https://testpro-uktu.onrender.com/api/register`,data)
             .then((res) => {
                 console.log(res)
             })

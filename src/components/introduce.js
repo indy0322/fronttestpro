@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
+import { useMediaQuery } from 'react-responsive'
 import 'bulma/css/bulma.css'
 
+
 function Introduce() {
+
+    const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
+    const isMobile = useMediaQuery({ query: '(max-width:768px)' })
 
     const onOpenClose = () => {
         //setInnerState(!innerState)
@@ -42,85 +47,255 @@ function Introduce() {
         }
     }
 
+    const onClickContentLanguage = () => {
+        const contentsLanguage = document.getElementsByClassName("contentsLanguage")[0]
+        const isActive = document.getElementsByClassName("is-active")[0]
+        const languageOpen = document.getElementsByClassName("languageOpen")[0]
+        if(languageOpen){
+            contentsLanguage.classList.remove("is-active")
+            contentsLanguage.classList.remove("languageOpen")
+        }else if(!languageOpen){
+            contentsLanguage.classList.add("is-active")
+            contentsLanguage.classList.add("languageOpen")
+        }
+
+    }
+    
+    const onClickChangeLanguage = (e) =>{
+        const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
+        contentLanguageTitle.innerHTML = e.target.innerHTML
+    }
+
 
     return(
         <div>
-            <div className="imageContainer" style={{height:"40vh",width:"100vw",top:"0",position:"fixed"}}>         
-                <figure className="image" style={{height:"40vh"}}>
-                    <img style={{width:"100vw", height:"40vh",top:"0",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>
+            {isDesktop && <div className="isDesktop">
+            <nav class="navbar" role="navigation" aria-label="main navigation" style={{height:"8vh"}}>
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="https://bulma.io">
+                    <img src="#" width="112" height="28"/>
+                    </a>
+
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item">
+                            Home
+                        </a>
+                        <a class="navbar-item">
+                            Map
+                        </a>
+                        <a class="navbar-item">
+                            Translation
+                        </a>
+                        <a class="navbar-item">
+                            Wishlist
+                        </a>
+                    </div>
+
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="buttons">
+                            <a class="button is-primary">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-link">
+                                Log in
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <div className="imageContainer" style={{height:"50vh",width:"50vw",top:"8vh",position:"fixed"}}>        
+                <figure className="image" style={{height:"50vh"}}>
+                    <img style={{width:"50vw", height:"50vh",top:"8vh",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>
                 </figure>
-                <span className="heartBtn heartFull" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>❤️</span>
+                <span className="heartBtn heartFull" type="button" style={{top:"8vh",left:"1vw",position:"fixed",fontSize:"3vw"}} onClick={onClickHeart}>❤️</span>
             </div>
-            <div className="contentsContainer" style={{backgroundColor:"purple",top:"40vh", position:"fixed", textAlign:"center", width:"100vw", height:"40vh"}}>
-                <button className="button is-dark">버튼</button>
-                <p>내용</p>
-                <div className="dropdown">
+
+            <div className="contentsContainer" style={{backgroundColor:"white",top:"8vh",right:"0",position:"fixed", width:"50vw", height:"50vh"}}>
+                <div style={{width:"48vw",top:"15vh",right:"0",position:"fixed",margin:"1vw"}}>
+                    <textarea className="textarea is-danger" disabled rows={9} style={{fontSize:"20px"}}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
+경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
+경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
+                </div>
+
+                <div style={{margin:"2vw",right:"25vw", top:"7vh",position:"fixed"}}>
+                    <button className="button is-danger" style={{width:"10vw"}}>관광지 지도</button>
+                </div>
+
+                <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw", top:"7vh",position:"fixed"}}>
                     <div className="dropdown-trigger">
-                        <button className="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Click me</span>
-                        <span className="icon is-small">
+                        <button className="button is-info" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={onClickContentLanguage} style={{width:"10vw"}}>
+                            <span className="contentLanguageTitle">한국어</span>
                             <i className="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
                         </button>
                     </div>
                     <div className="dropdown-menu" id="dropdown-menu3" role="menu">
-                        <div className="dropdown-content">
-                            <a href="#" className="dropdown-item">
-                                Overview
+                        <div className="dropdown-content" style={{width:"20vw",height:"30vh",overflowY:"scroll"}}>
+                            <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                한국어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Modifiers
+                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                중국어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Grid
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                영어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Form
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                일본어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Elements
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                러시아어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Components
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                대만어
                             </a>
-                            <a href="#" className="dropdown-item">
-                                Layout
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                포르투갈어
                             </a>
-                            <hr className="dropdown-divider"/>
-                            <a href="#" className="dropdown-item">
-                                More
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                스페인어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                베트남어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                그 외
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div style={{top:"58vh",right:"0",position:"fixed"}}>
+                <button className="button is-dark" style={{margin:"2vw"}}>리뷰작성</button>
+            </div>
+
+            <div className="reviewContainer" style={{height:"30vh",width:"100vw",backgroundColor:"skyblue",bottom:"0",position:"fixed",overflowY:"scroll"}}>
+                <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    (닉네임) 좋은 관광지~~~
+                </div>
+                <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    (닉네임) 별로임
+                </div>
+                <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    (닉네임) 그럭저럭 괜찮아
+                </div>
+                <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    (닉네임) 서비스가 그닥...
+                </div>
+                <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                    (닉네임) 좋은 관광지~~~
+                </div>
+            </div>
+            </div>}
+
+
+
+
+
+
+            {isMobile && <div className="isMobile">
+            <div className="imageContainer" style={{height:"40vh",width:"100vw",top:"0",position:"fixed"}}>        
+                <figure className="image" style={{height:"40vh"}}>
+                    <img style={{width:"100vw", height:"40vh",top:"0",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>
+                </figure>
+                <span className="mapBtn" type="button" style={{top:"0", left:"2vw",position:"fixed",fontSize:"10vw"}}>⬅️</span>
+                <span className="mapBtn" type="button" style={{top:"32vh", right:"2vw",position:"fixed",fontSize:"10vw"}}>🗺️</span>
+                <span className="heartBtn heartFull" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>❤️</span>
+            </div>
+
+            <div className="contentsContainer" style={{backgroundColor:"white",top:"40vh", position:"fixed", width:"100vw", height:"50vh",alignItems:"center"}}>
+                <button className="button is-dark" style={{margin:"2vw"}}>리뷰작성</button>
+
+                <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>
+                    <div className="dropdown-trigger">
+                        <button className="button is-info" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={onClickContentLanguage}>
+                            <span className="contentLanguageTitle">한국어</span>
+                            <i className="fas fa-angle-down" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div className="dropdown-menu" id="dropdown-menu3" role="menu" style={{width:"100%"}}>
+                        <div className="dropdown-content" style={{width:"25vw",height:"30vh",overflowY:"scroll"}}>
+                            <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                한국어
+                            </a>
+                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                중국어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                영어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                일본어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                러시아어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                대만어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                포르투갈어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                스페인어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                베트남어
+                            </a>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                그 외
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div style={{width:"90vw",marginLeft:"5vw"}}>
+                    <textarea className="textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
+경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
+경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
+                </div>
+
+                
+            </div>
+
             <div className="reviewContainer close" style={{height:"13vh",width:"100vw",backgroundColor: "rgba(0,0,0,0)",bottom:"0",position:"fixed", transition: "height 0.5s"}}>
                 <button className="btn open button is-light" style={{color:"red", height:"3vh"}} onClick={onOpenClose}>open</button>
-                <div className="review" style={{backgroundColor:"yellow",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
-                    <div className="box">
-                        I'm in a box.
+                <div className="review" style={{backgroundColor:"skyblue",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        (닉네임) 좋은 관광지~~~
                     </div>
-                    <div className="box">
-                        I'm in a box2.
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        (닉네임) 별로임
                     </div>
-                    <div className="box">
-                        I'm in a box3.
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        (닉네임) 그럭저럭 괜찮아
                     </div>
-                    <div className="box">
-                        I'm in a box4.
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        (닉네임) 서비스가 그닥...
                     </div>
-                    <div className="box">
-                        I'm in a box.
-                    </div>
-                    <div className="box">
-                        I'm in a box.
+                    <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
+                        (닉네임) 좋은 관광지~~~
                     </div>
                 </div>
             </div>
-            <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"red",bottom:"0",position:"fixed"}}>
-
+            <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"white",bottom:"0",position:"fixed",alignItems:"center",justifyContent:"center",display:"flex"}}>
+                <img type="button" src="/images/main.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                <img type="button" src="/images/blackheart.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                <img type="button" src="/images/translate.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
             </div>
+            </div>}
         </div>
     )
 }

@@ -100,7 +100,6 @@ function Test() {
                 "Authorization": userToken
             },
             //method: "GET",
-            withCredentials: true
         }
 
         try{
