@@ -16,6 +16,9 @@ function Test() {
     const [resgisterId, setRegisterId] = useState()
     const [registerPw, setRegisterPw] = useState()
     const [registerName, setRegisterName] = useState()
+    const [tourList, setTourList] = useState([])
+
+    const [googleLang, setGoogleLang] = useState('ko')
 
     const handleId = (e) => {
         setRegisterId(e.target.value)
@@ -34,19 +37,22 @@ function Test() {
         setLang(e.target.value)
     }
 
+    const handleChangeLang = (e) => {
+        setGoogleLang(e.target.value)
+    }
+
     
 
     useEffect(async () => {
-        console.log(`${process.env.REACT_APP_KEY}`)
+        console.log(`${process.env.REACT_APP_GOOGLEKEY}`)
         const key = `Ptb926c0Feu4UG1IH76IjAHxpnG8psQyzx7amXPbEX0CFKUJiig7K7lmGsBiv0HaZnNsVAlOx5Bkxk51BMPlFQ%3D%3D`
 
-        const gKey = `AIzaSyC3WkfRj6nDrKJTCQ6xgxh7ZzTwpx24xFI`
+        
         /*await axios.post(`https://translation.googleapis.com/language/translate/v2?key=${googleKey}&target=ja&q=안녕하세요`)
             .then((res) => {
                 console.log(res.data.data.translations[0].translatedText)
             })*/
-        testService.searchStay(key)
-
+        testService.searchStay(setTourList,key)
     },[])
 
     const{
@@ -134,11 +140,12 @@ function Test() {
     
 
     return(
+        <div>
         <Translator
             //cacheProvider={cacheProvider}
-            //from='ko'
-            //to='ja'
-            //googleApiKey='AIzaSyC3WkfRj6nDrKJTCQ6xgxh7ZzTwpx24xFI'
+            /*from='ko'
+            to={googleLang}
+            googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
         >
             
             <h1><Translate>테스트 화면</Translate></h1>
@@ -147,6 +154,23 @@ function Test() {
             <button onClick={onAuth}>인증</button>
             <input onChange={changeId}></input>
             <input onChange={changePw}></input>
+
+            <div>
+                <select onChange={handleChangeLang}>
+                    <option value={'ko'}>한국</option>
+                    <option value={"ja"}>일본</option>
+                    <option value={"zh-CN"}>중국</option>
+                    <option value={"ru"}>러시아</option>
+                </select>
+                {tourList.map((e) => {
+                    return(<p><Translator
+                        //cacheProvider={cacheProvider}
+                        from='ko'
+                        to={googleLang}
+                        googleApiKey={process.env.REACT_APP_GOOGLEKEY}
+                    ><Translate>{e.addr1}</Translate></Translator></p>)
+                })}
+            </div>
             
             <p>Microphone: {listening ? 'on' : 'off'}</p>
             <button onClick={startlisen}>Start</button>
@@ -180,6 +204,7 @@ function Test() {
             </div>
             
         </Translator>
+    </div>
     )
 }
 

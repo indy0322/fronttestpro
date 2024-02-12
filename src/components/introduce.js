@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import { useMediaQuery } from 'react-responsive'
 import 'bulma/css/bulma.css'
+import { useNavigate } from "react-router-dom";
+import {Translator, Translate} from 'react-auto-translate';
 
 
 function Introduce() {
 
+    useEffect(() => {
+        
+    })
+
     const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
     const isMobile = useMediaQuery({ query: '(max-width:768px)' })
+    
+    const navigate = useNavigate();
 
     const onOpenClose = () => {
         //setInnerState(!innerState)
@@ -64,6 +72,10 @@ function Introduce() {
     const onClickChangeLanguage = (e) =>{
         const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
         contentLanguageTitle.innerHTML = e.target.innerHTML
+    }
+
+    const onClickReviewBtn = (e) => {
+        navigate("/review/경복궁")
     }
 
 
@@ -177,7 +189,7 @@ function Introduce() {
             </div>
 
             <div style={{top:"58vh",right:"0",position:"fixed"}}>
-                <button className="button is-dark" style={{margin:"2vw"}}>리뷰작성</button>
+                <button className="button is-dark reviewBtn" onClick={onClickReviewBtn} style={{margin:"2vw"}} >리뷰작성</button>
             </div>
 
             <div className="reviewContainer" style={{height:"30vh",width:"100vw",backgroundColor:"skyblue",bottom:"0",position:"fixed",overflowY:"scroll"}}>
@@ -215,7 +227,7 @@ function Introduce() {
             </div>
 
             <div className="contentsContainer" style={{backgroundColor:"white",top:"40vh", position:"fixed", width:"100vw", height:"50vh",alignItems:"center"}}>
-                <button className="button is-dark" style={{margin:"2vw"}}>리뷰작성</button>
+                <button className="button is-dark" onClick={onClickReviewBtn} style={{margin:"2vw"}}>리뷰작성</button>
 
                 <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>
                     <div className="dropdown-trigger">
@@ -260,7 +272,7 @@ function Introduce() {
                     </div>
                 </div>
                 <div style={{width:"90vw",marginLeft:"5vw"}}>
-                    <textarea className="textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
+                <textarea className="textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
 경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
 경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
                 </div>

@@ -1,12 +1,14 @@
 import axios from "axios";
+import { json } from "react-router-dom";
 
 
 class testService{
 
-    async searchStay(key){
+    async searchStay(setTourList,key){
         return await axios.get(`https://apis.data.go.kr/B551011/KorService1/searchKeyword1?serviceKey=${key}&numOfRows=30&MobileOS=WIN&_type=json&MobileApp=test&listYN=Y&keyword=경복궁`)
                 .then((res) => {
                     console.log(res.data.response.body.items.item)
+                    setTourList(res.data.response.body.items.item)
                 })
     }
 
@@ -56,6 +58,13 @@ class testService{
 
     async register(data) {
         return await axios.post(`https://testpro-uktu.onrender.com/api/register`,data)
+            .then((res) => {
+                console.log(res)
+            })
+    }
+
+    async reviewRegister(data) {
+        return await axios.post(`/api/reviewregister`,data)
             .then((res) => {
                 console.log(res)
             })
