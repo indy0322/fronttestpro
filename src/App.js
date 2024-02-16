@@ -7,6 +7,11 @@ import Test3 from './components/test3';
 import Introduce from './components/introduce';
 import Review from './components/review';
 import Sangyong from './components/sangyong';
+import Start from './components/start';
+import Login from './components/login'
+import TestMap from './components/testMap3';
+import TestMapNew from './components/testMapNew';
+import MapComponent from './components/map1';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -15,6 +20,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/main" element={<Main/>}></Route>
+          <Route path="/map1" id='현재최종본' element={<MapComponent/>}></Route>
+          <Route path='/start' element={<Start/>}></Route>
+          <Route path='/login' element={<Login/>}></Route>
           <Route path="/sangyong" element={<Sangyong/>}></Route>
           <Route path="/test" element={<Test/>}></Route>
           <Route path='/' element={<Introduce/>}></Route>

@@ -78,6 +78,45 @@ function Introduce() {
         navigate("/review/경복궁")
     }
 
+    const onClickBackBtn = (e) => {
+        navigate(-1)
+    }
+
+    const onClicklanguageBtn = () => {
+        const languageContainer = document.getElementsByClassName("languageContainer")[0]
+        const languageContainerBtn = document.getElementsByClassName("languageContainerBtn")[0]
+        const langBtnOpen = document.getElementsByClassName("langBtnOpen")[0]
+        const langBtnClose = document.getElementsByClassName("langBtnClose")[0]
+        
+        if(langBtnOpen){
+            languageContainer.style.width = "0"
+            languageContainerBtn.style.width = "4vw"
+            languageContainerBtn.classList.remove("langBtnOpen")
+            languageContainerBtn.classList.add("langBtnClose")
+            
+        }
+        else if(langBtnClose){
+            languageContainer.style.width = "30vw"
+            languageContainerBtn.style.width = "35vw"
+            languageContainerBtn.classList.add("langBtnOpen")
+            languageContainerBtn.classList.remove("langBtnClose")
+            
+        }
+        
+    }
+
+    const modalOpen = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+
+        modal.classList.add("is-active")
+    }
+
+    const modalClose = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+
+        modal.classList.remove("is-active")
+    }
+
 
     return(
         <div>
@@ -221,13 +260,26 @@ function Introduce() {
                 <figure className="image" style={{height:"40vh"}}>
                     <img style={{width:"100vw", height:"40vh",top:"0",position:"fixed"}} src="http://tong.visitkorea.or.kr/cms/resource/33/2678633_image2_1.jpg"/>
                 </figure>
-                <span className="mapBtn" type="button" style={{top:"0", left:"2vw",position:"fixed",fontSize:"10vw"}}>⬅️</span>
+                <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
                 <span className="mapBtn" type="button" style={{top:"32vh", right:"2vw",position:"fixed",fontSize:"10vw"}}>🗺️</span>
                 <span className="heartBtn heartFull" type="button" style={{top:"0",right:"2vw",position:"fixed",fontSize:"10vw"}} onClick={onClickHeart}>❤️</span>
             </div>
 
             <div className="contentsContainer" style={{backgroundColor:"white",top:"40vh", position:"fixed", width:"100vw", height:"50vh",alignItems:"center"}}>
                 <button className="button is-dark" onClick={onClickReviewBtn} style={{margin:"2vw"}}>리뷰작성</button>
+
+                
+                <div style={{width:"90vw",marginLeft:"5vw"}}>
+                <textarea className="textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
+경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
+경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
+                </div>
+            </div>
+
+            <div className="languageContainerBtn langBtnClose" style={{zIndex:"1", backgroundColor: "rgba(0,0,0,0)",top:"40vh",right:"0", position:"fixed", width:"4vw",height:"8vh",transition: "width 0.5s"}}>
+                <button className="languageBtn open button is-success" style={{color:"red", height:"8vh",width:"1vw",padding:"2vw",float:"left",writingMode:"vertical-rl",fontSize:"3vw"}} onClick={onClicklanguageBtn}>언어</button>
+            </div>
+            <div className="languageContainer" style={{zIndex:"2", backgroundColor:"white",top:"40vh",right:"0", position:"fixed", width:"0vw",height:"8vh",transition: "width 0.5s"}}>
 
                 <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>
                     <div className="dropdown-trigger">
@@ -242,46 +294,33 @@ function Introduce() {
                                 한국어
                             </a>
                             <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                중국어
+                                日本語
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                영어
+                                English
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                일본어
+                                中文
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                러시아어
+                                Русский
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                대만어
+                                عربي    
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                포르투갈어
+                                Português
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                스페인어
-                            </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                베트남어
-                            </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                그 외
+                                Español
                             </a>
                         </div>
                     </div>
                 </div>
-                <div style={{width:"90vw",marginLeft:"5vw"}}>
-                <textarea className="textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
-경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
-경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
-                </div>
-
-                
             </div>
 
             <div className="reviewContainer close" style={{height:"13vh",width:"100vw",backgroundColor: "rgba(0,0,0,0)",bottom:"0",position:"fixed", transition: "height 0.5s"}}>
-                <button className="btn open button is-light" style={{color:"red", height:"3vh"}} onClick={onOpenClose}>open</button>
+                <button className="btn open button is-light" style={{color:"red", height:"3vh",width:"20vw"}} onClick={onOpenClose}>리뷰</button>
                 <div className="review" style={{backgroundColor:"skyblue",height:"0vh",width:"100vw",bottom:"10vh",position:"fixed", transition:"height 0.5s", overflowY:"scroll"}}>
                     <div className="box" style={{margin:"1vw", fontWeight:"bold"}}>
                         (닉네임) 좋은 관광지~~~
@@ -305,8 +344,21 @@ function Introduce() {
                 <img type="button" src="/images/blackheart.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                 <img type="button" src="/images/translate.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                 <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
             </div>
+
+            <div className="modal">
+                    <div className="modal-background modalBackground" onClick={modalClose}></div>
+                    <div className="modal-content">
+                        <div className="box" style={{width:"80vw",margin:"10vw"}}>
+                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
+                    
+                            <button class="button is-success" style={{margin:"1vw",padding:"2vw"}}>회원정보</button>
+                            <button class="button is-success" style={{margin:"1vw",padding:"2vw"}}>로그아웃</button>
+                            
+                        </div>
+                    </div>
+                </div>
             </div>}
         </div>
     )

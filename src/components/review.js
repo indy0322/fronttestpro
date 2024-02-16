@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive'
 import testService from "../services/testServices";
 import 'bulma/css/bulma.css'
 
+
 function Review() {
-    
-    const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
-    const isMobile = useMediaQuery({ query: '(max-width:768px)' })
-
-    const params = useParams()
-    const [tourName, setTourName] = useState()
-    const [nickName, setNickName] = useState()
-    const [reviewContent, setReviewContent] = useState()
-
 
     useEffect(() => {
         console.log(params)
@@ -28,16 +20,83 @@ function Review() {
 
         console.log(tourname.value)
     },[])
+    
+    const isDesktop = useMediaQuery({ query: '(min-width:769px)' })
+    const isMobile = useMediaQuery({ query: '(max-width:768px)' })
+
+    const params = useParams()
+    const navigate = useNavigate()
+    
+    const [tourName, setTourName] = useState()
+    const [nickName, setNickName] = useState()
+    const [reviewContent, setReviewContent] = useState()
 
 
     const onClickReviewRegister = () => {
         testService.reviewRegister({nickname:nickName, tourname:tourName, review:reviewContent})
+        navigate(-1)
     }
 
     const onChangeReview = (e) => {
         setReviewContent(e.target.value)
     }
 
+    const onClicklanguageBtn = () => {
+        const languageContainer = document.getElementsByClassName("languageContainer")[0]
+        const languageContainerBtn = document.getElementsByClassName("languageContainerBtn")[0]
+        const langBtnOpen = document.getElementsByClassName("langBtnOpen")[0]
+        const langBtnClose = document.getElementsByClassName("langBtnClose")[0]
+        
+        if(langBtnOpen){
+            languageContainer.style.width = "0"
+            languageContainerBtn.style.width = "4vw"
+            languageContainerBtn.classList.remove("langBtnOpen")
+            languageContainerBtn.classList.add("langBtnClose")     
+        }
+        else if(langBtnClose){
+            languageContainer.style.width = "30vw"
+            languageContainerBtn.style.width = "35vw"
+            languageContainerBtn.classList.add("langBtnOpen")
+            languageContainerBtn.classList.remove("langBtnClose")        
+        }
+        
+    }
+
+    const onClickContentLanguage = () => {
+        const contentsLanguage = document.getElementsByClassName("contentsLanguage")[0]
+        const isActive = document.getElementsByClassName("is-active")[0]
+        const languageOpen = document.getElementsByClassName("languageOpen")[0]
+        if(languageOpen){
+            contentsLanguage.classList.remove("is-active")
+            contentsLanguage.classList.remove("languageOpen")
+        }else if(!languageOpen){
+            contentsLanguage.classList.add("is-active")
+            contentsLanguage.classList.add("languageOpen")
+        }
+
+    }
+
+    const onClickChangeLanguage = (e) =>{
+        const contentLanguageTitle = document.getElementsByClassName("contentLanguageTitle")[0]
+        contentLanguageTitle.innerHTML = e.target.innerHTML
+    }
+
+    
+    const onClickBackBtn = (e) => {
+        navigate(-1)
+    }
+
+    const modalOpen = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+
+        modal.classList.add("is-active")
+    }
+
+    const modalClose = () => {
+        const modal = document.getElementsByClassName("modal")[0]
+
+        modal.classList.remove("is-active")
+    }
 
     return(
         <div>
@@ -115,7 +174,8 @@ function Review() {
 
 
             {isMobile && <div>
-                <div className="contentsContainer" style={{top:"2vh",position:"fixed"}}>
+                <div className="contentsContainer" style={{top:"10vh",position:"fixed"}}>
+                    <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
                     <div className="field">
                         <label className="label">관광지명</label>
                         <div className="control" style={{width:"90vw",margin:"5vw"}}>
@@ -140,12 +200,71 @@ function Review() {
                         </div>
                     </div>
                 </div>
+
+                <div className="languageContainerBtn langBtnClose" style={{zIndex:"1", backgroundColor: "rgba(0,0,0,0)",top:"40vh",right:"0", position:"fixed", width:"4vw",height:"8vh",transition: "width 0.5s"}}>
+                    <button className="languageBtn open button is-success" style={{color:"red", height:"8vh",width:"1vw",padding:"2vw",float:"left",writingMode:"vertical-rl",fontSize:"3vw"}} onClick={onClicklanguageBtn}>언어</button>
+                </div>
+                <div className="languageContainer" style={{zIndex:"2", backgroundColor:"white",top:"40vh",right:"0", position:"fixed", width:"0vw",height:"8vh",transition: "width 0.5s"}}>
+                    
+                    <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>
+                        <div className="dropdown-trigger">
+                            <button className="button is-info" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={onClickContentLanguage}>
+                                <span className="contentLanguageTitle">한국어</span>
+                                <i className="fas fa-angle-down" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div className="dropdown-menu" id="dropdown-menu3" role="menu" style={{width:"100%"}}>
+                            <div className="dropdown-content" style={{width:"25vw",height:"30vh",overflowY:"scroll"}}>
+                                <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    한국어
+                                </a>
+                                <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    日本語
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    English
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    中文
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    Русский
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    عربي    
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    Português
+                                </a>
+                                <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                                    Español
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+ 
+
                 <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"white",bottom:"0",position:"fixed",alignItems:"center",justifyContent:"center",display:"flex"}}>
                     <img type="button" src="/images/main.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                     <img type="button" src="/images/blackheart.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                     <img type="button" src="/images/translate.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
                     <img type="button" src="/images/map.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
-                    <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
+                    <img type="button" src="/images/user.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}} onClick={modalOpen}></img>
+                </div>
+
+
+                <div className="modal">
+                    <div className="modal-background modalBackground" onClick={modalClose}></div>
+                    <div className="modal-content">
+                        <div className="box" style={{width:"80vw",margin:"10vw"}}>
+                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
+                    
+                            <button class="button is-success" style={{margin:"1vw",padding:"2vw"}}>회원정보</button>
+                            <button class="button is-success" style={{margin:"1vw",padding:"2vw"}}>로그아웃</button>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>}
             

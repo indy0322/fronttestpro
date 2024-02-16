@@ -64,10 +64,16 @@ class testService{
     }
 
     async reviewRegister(data) {
-        return await axios.post(`/api/reviewregister`,data)
-            .then((res) => {
-                console.log(res)
-            })
+        try{
+            return await axios.post(`/api/reviewregister`,data)
+                .then((res) => {
+                    console.log(res)
+                })
+        }catch(err){
+            
+            console.log(err)
+        }
+        
     }
 }
 

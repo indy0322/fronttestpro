@@ -20,6 +20,8 @@ function Test() {
 
     const [googleLang, setGoogleLang] = useState('ko')
 
+    const [script, setScript] = useState('')
+
     const handleId = (e) => {
         setRegisterId(e.target.value)
     }
@@ -53,7 +55,11 @@ function Test() {
                 console.log(res.data.data.translations[0].translatedText)
             })*/
         testService.searchStay(setTourList,key)
+
+        
     },[])
+    
+    
 
     const{
         transcript,
@@ -71,6 +77,22 @@ function Test() {
 
     if(!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support recognition.</span>
+    }
+
+    
+
+    const onClickPlay = () => {
+        const script = document.getElementById("script")
+        console.log(script.innerHTML)
+        if(script.innerHTML !== ""){
+            console.log(script.innerHTML)
+            const utterThis = new SpeechSynthesisUtterance(script.innerHTML)
+            utterThis.pitch = 1
+            utterThis.rate = 1
+            utterThis.lang = lang
+            window.speechSynthesis.speak(utterThis)
+            //utterThis.onend()
+        }
     }
 
 
@@ -148,12 +170,24 @@ function Test() {
             googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
         >
             
-            <h1><Translate>테스트 화면</Translate></h1>
+            <h1 class="testScreen"><Translate>테스트 화면</Translate></h1>
             <button onClick={onClickBtn}><Translate>연습</Translate></button>
             <button onClick={onLogin}>로그인</button>
             <button onClick={onAuth}>인증</button>
             <input onChange={changeId}></input>
             <input onChange={changePw}></input>
+        </Translator>
+
+        {/*<iframe
+                width="450"
+                height="250"
+                frameborder="0" 
+                style={{border:"0"}}
+                referrerpolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyCMUpRd2v-ZsH7IAeBnrnGOn8YvrgOZAyY&origin=37.0080,127.2763&destination=Кёнбоккун&mode=transit&language=${googleLang}`}
+                allowfullscreen
+            >
+    </iframe>*/}
 
             <div>
                 <select onChange={handleChangeLang}>
@@ -162,21 +196,22 @@ function Test() {
                     <option value={"zh-CN"}>중국</option>
                     <option value={"ru"}>러시아</option>
                 </select>
-                {tourList.map((e) => {
+                {/*tourList.map((e) => {
                     return(<p><Translator
                         //cacheProvider={cacheProvider}
-                        from='ko'
-                        to={googleLang}
-                        googleApiKey={process.env.REACT_APP_GOOGLEKEY}
+                        //from='ko'
+                        //to={googleLang}
+                        //googleApiKey={process.env.REACT_APP_GOOGLEKEY}
                     ><Translate>{e.addr1}</Translate></Translator></p>)
-                })}
+                })*/}
             </div>
             
             <p>Microphone: {listening ? 'on' : 'off'}</p>
             <button onClick={startlisen}>Start</button>
             <button onClick={SpeechRecognition.stopListening}>Stop</button>
             <button onClick={resetTranscript}>Reset</button>
-            <p>{transcript}</p>
+            <p id="script">{transcript}</p>
+            <button onClick={onClickPlay}>재생</button>
 
             <div>
                 <select onChange={handleLang}>
@@ -186,6 +221,8 @@ function Test() {
                     <option value={"ru"}>러시아어</option>
                 </select>
             </div>
+
+            
 
             <div>
                 이름:<input onChange={handleName}></input>
@@ -203,7 +240,7 @@ function Test() {
 
             </div>
             
-        </Translator>
+            
     </div>
     )
 }
