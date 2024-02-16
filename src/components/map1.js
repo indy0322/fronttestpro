@@ -2,24 +2,10 @@ import React, { useState,useRef, useEffect } from 'react';
 import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@react-google-maps/api';
 
 const MapComponent = () => {
-    useEffect(async() => {
-        navigator.geolocation.getCurrentPosition((position) => {
-            setLat(position.coords.latitude)
-            setLng(position.coords.longitude)
-        },(err) => {
-            console.log(err)
-        })
-
-        let lang = JSON.parse(localStorage.getItem('language'))
-        if(lang){
-            console.log(lang.lang1)
-            setLang(lang.lang1)
-        }
-
-    },[])
 
 
-    const apiKey = process.env.REACT_APP_GOOGLEKEY;
+
+    const apiKey = ''
     const [lang, setLang] = useState('ko')
     const [origin,setOrigin] = useState()
     const [destination, setDestination] = useState()
@@ -86,11 +72,27 @@ const MapComponent = () => {
         //setLang(e.target.value.split(' ')[0])
     }
 
+    useEffect(async() => {
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat(position.coords.latitude)
+            setLng(position.coords.longitude)
+        },(err) => {
+            console.log(err)
+        })
+
+        let lang = JSON.parse(localStorage.getItem('language'))
+        if(lang){
+            console.log(lang.lang1)
+            setLang(lang.lang1)
+        }
+
+    },[])
+
     
 
     return (
         <>
-            {lang && <LoadScript googleMapsApiKey={apiKey} language={lang}>
+            <LoadScript googleMapsApiKey={apiKey} language={lang}>
             <GoogleMap
                 mapContainerStyle={{ height: '400px', width: '100%' }}
                 center={defaultCenter}
@@ -106,7 +108,7 @@ const MapComponent = () => {
 
                 
             </GoogleMap>
-            </LoadScript>}
+            </LoadScript>
             <select ref={langRef} onChange={Handle}>
                     <option value={'ko 한국어'}>한국어</option>
                     <option value={"ja 일본어"}>일본어</option>

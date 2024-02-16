@@ -11,7 +11,7 @@ import Start from './components/start';
 import Login from './components/login'
 import TestMap from './components/testMap3';
 import TestMapNew from './components/testMapNew';
-import MapComponent from './components/map1';
+import MapComponent1 from './components/testMap';//현재최종본 /map1
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -20,7 +20,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/main" element={<Main/>}></Route>
-          <Route path="/map1" id='현재최종본' element={<MapComponent/>}></Route>
+          <Route path="/mapnew" element={<TestMapNew/>}></Route>
+          <Route path="/map1" element={<MapComponent1/>}></Route>
           <Route path='/start' element={<Start/>}></Route>
           <Route path='/login' element={<Login/>}></Route>
           <Route path="/sangyong" element={<Sangyong/>}></Route>

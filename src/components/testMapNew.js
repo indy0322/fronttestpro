@@ -4,42 +4,36 @@ import testService from "../services/testServices";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import {Translator, Translate} from 'react-auto-translate';
 import 'bulma/css/bulma.css'
-import { GoogleMap,LoadScript,DirectionsService,DirectionsRenderer,useJsApiLoader,useLoadScript } from '@react-google-maps/api';
+import { GoogleMap,LoadScript,DirectionsService,DirectionsRenderer } from '@react-google-maps/api';
 
-const center = {
-    lat: 37.5760222,
-    lng: 126.9769000
-}
+
 
 
 
 
 function TestMapNew() {
 
-    const Handle =(e)=> {
-        isLoaded = useJsApiLoader({
-            googleMapsApiKey: process.env.REACT_APP_GOOGLEKEY,//process.env.REACT_APP_GOOGLEKEY,
-            language: e.target.value,
-            libraries: ['places']
-        })   
-    }
     useEffect(() => {
         let lang = JSON.parse(localStorage.getItem('language'))
         console.log(lang.lang1)
         console.log(lang.lang2)
         
         setGoogleLang(lang.lang1)
+
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat(position.coords.latitude)
+            setLng(position.coords.longitude)
+        },(err) => {
+            console.log(err)
+        })
     })
 
     const langRef = useRef()
     const [googlelang, setGoogleLang] = useState('')
+    const [lat,setLat] = useState()
+    const [lng,setLng] = useState()
+    const apikey = process.env.REACT_APP_GOOGLEKEY
    
-    
-    const {isLoaded} = useJsApiLoader({
-        googleMapsApiKey: '',//process.env.REACT_APP_GOOGLEKEY,
-        language: "ko",
-        libraries: ['places']
-    })
 
 
     const [directionsResonse, setDirectionsResponse] = useState(null)
@@ -47,6 +41,18 @@ function TestMapNew() {
     const originRef = useRef()
 
     const destinationRef = useRef()
+
+    const center = {
+        lat: lat,
+        lng: lng
+    }
+
+    
+    
+
+    
+
+    
 
     
 
@@ -65,24 +71,29 @@ function TestMapNew() {
         setDirectionsResponse(result)
 
     }
+    const Handle =(e)=> {
+        
+    }
 
     return(
         <div>
             
-            {isLoaded ? <GoogleMap 
-                center={center}
-                zoom={12}
-                mapContainerStyle={{height:'400px',width:"100%"}}
-            >
-                {directionsResonse && <DirectionsRenderer directions={directionsResonse}/>}
-            </GoogleMap>:(<p>loading</p>)}
-           
+            <LoadScript googleMapsApiKey={apikey} language={googlelang}>
+                <GoogleMap 
+
+                    center={center}
+                    zoom={12}
+                    mapContainerStyle={{height:'400px',width:"100%"}}
+                >
+                    {directionsResonse && <DirectionsRenderer directions={directionsResonse}/>}
+                </GoogleMap>
+            </LoadScript>
             
             
             
             <div>
-                <input ref={originRef}></input>
-                <input ref={destinationRef}></input>
+                <input className='originR' ></input>
+                <input className='destinationR'></input>
                 <button onClick={calculateRoute}>검색</button>
             </div>
 
