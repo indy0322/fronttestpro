@@ -12,6 +12,7 @@ import Login from './components/login'
 import TestMap from './components/testMap3';
 import TestMapNew from './components/testMapNew';
 import MapComponent1 from './components/testMap';//현재최종본 /map1
+import OpenStreetMap from './components/openstreetmap';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/main" element={<Main/>}></Route>
+          <Route path='/openstreetmap' element={<OpenStreetMap/>}></Route>
           <Route path="/mapnew" element={<TestMapNew/>}></Route>
           <Route path="/map1" element={<MapComponent1/>}></Route>
           <Route path='/start' element={<Start/>}></Route>

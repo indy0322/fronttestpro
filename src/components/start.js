@@ -202,6 +202,9 @@ function Start() {
                     </div>
                 </div>
                 </Translator>
+                <div style={{marginTop:"4vh"}}>
+                    <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3"><img src="/images/go.png" style={{height:"4vh"}}></img></button>
+                </div>
                 {/*<div className="emailPasswordContainer" style={{width:"90vw",margin:"5vw"}}>
                     <label className="label" style={{float:"left"}}>이메일</label>
                     <input class="email input is-info" type="text" placeholder="Email" style={{marginBottom:"2vw"}}></input>

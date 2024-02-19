@@ -11,7 +11,7 @@ const MapComponent = () => {
         setGoogleLang(lang.lang1)
     },[])
 
-    const apiKey = process.env.REACT_APP_GOOGLEKEY;
+    const apiKey = ''//process.env.REACT_APP_GOOGLEKEY;
 
 
     const [lat,setLat] = useState()

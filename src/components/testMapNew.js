@@ -32,7 +32,7 @@ function TestMapNew() {
     const [googlelang, setGoogleLang] = useState('')
     const [lat,setLat] = useState()
     const [lng,setLng] = useState()
-    const apikey = process.env.REACT_APP_GOOGLEKEY
+    const apikey = ''//process.env.REACT_APP_GOOGLEKEY
    
 
 

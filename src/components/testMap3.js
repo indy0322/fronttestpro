@@ -156,7 +156,7 @@ function TestMap() {
                 
                 {(googleLang && lat && lng) &&
                     <GoogleMapReact
-                        bootstrapURLKeys={{key:process.env.REACT_APP_GOOGLEKEY,language:googleLang}}
+                        bootstrapURLKeys={{key:'',language:googleLang}}
                         defaultCenter={defaultProps.center}
                         defaultZoom={defaultProps.zoom}
                         onGoogleApiLoaded={({map,maps}) => apilsLoaded(map,maps)}
