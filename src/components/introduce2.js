@@ -9,39 +9,9 @@ import OpenAI from "openai";
 function Introduce() {
 
     useEffect(async () => {
-        let lang = JSON.parse(localStorage.getItem('language'))
-        if(lang){
-            console.log(lang.lang1)
-            console.log(lang.lang2)
-            setTourLang(lang.lang2)
-        }
-
-        console.log(param.tourName)
-
-        //이 코드로 apikey만 넣으면 textarea에 관광지 소개가 들어간다. 하지만, 언어마다 사용되는 토큰의 양이 다르다. 중국어 같은 경우 max_tokens 256만으로는 안된다. 그래서 max_tokens의 값을 조정할 필요가 있다. 
-        const openai = new OpenAI({
-            apiKey: '',
-            dangerouslyAllowBrowser: true
-        })
-
-        const response = await openai.chat.completions.create({
-            model: "gpt-3.5-turbo",
-            messages: [
-                {
-                "role": "user",
-                "content": `${param.tourName} ${lang.lang2} 설명`
-                }
-            ],
-            temperature: 1,
-            max_tokens: 256,
-            top_p: 1,
-            frequency_penalty: 0,
-            presence_penalty: 0,
-        })
-        console.log(response.choices[0].message.content)
-
-        const explainTextarea = document.getElementsByClassName('explainTextarea')[0]
-        explainTextarea.innerHTML = response.choices[0].message.content
+        
+        /*const explainTextarea = document.getElementsByClassName('explainTextarea')[0]
+        explainTextarea.innerHTML = ""*/
 
     },[])
 
@@ -307,7 +277,9 @@ function Introduce() {
 
                 
                 <div style={{width:"90vw",marginLeft:"5vw"}}>
-                <textarea className="explainTextarea textarea is-danger" disabled rows={9}></textarea>
+                <textarea className="explainTextarea textarea is-danger" disabled rows={9}>경복궁은 대한민국 서울에 위치한 대표적인 궁궐로, 조선 시대에 건립된 역사적인 건물입니다. 이 궁궐은 1395년에 처음으로 건립되었으며, 조선 왕조의 정부 중심지로 사용되었습니다. 경복궁은 조선 왕조의 주요 궁궐 중 하나로 꼽히며, 대한민국에서 가장 큰 궁궐로 알려져 있습니다.
+경복궁은 그 자체로 아름다운 건축물과 정원, 돌담, 다양한 문화 유산을 갖추고 있어 많은 방문객들에게 사랑을 받고 있습니다. 대표적인 건물로는 경회루(경복궁에서 가장 큰 건물), 국립고궁박물관, 혜화문, 국립민속박물관 등이 있습니다.
+경복궁은 궁궐 자체뿐만 아니라 그 주변에 위치한 창경궁, 창덕궁, 종묘 등과 함께 서울의 대표적인 관광 명소 중 하나로 손꼽힙니다. 또한, 매년 여름에는 경복궁에서 전통적인 한복을 입은 인원들이 모여 참여하는 '한복 퍼레이드'와 같은 다양한 행사들이 개최되어 관광객들에게 특별한 경험을 선사하고 있습니다.</textarea>
                 </div>
             </div>
 

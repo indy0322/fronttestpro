@@ -84,28 +84,25 @@ function Start() {
                     </div>
                     <div className="dropdown-menu" id="dropdown-menu3" role="menu" style={{width:"100%"}}>
                         <div className="dropdown-content" style={{width:"25vw",height:"30vh",overflowY:"scroll"}}>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                        <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ko 한국어' onClick={onClickChangeLanguage}>
                                 한국어
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ja 日本語' onClick={onClickChangeLanguage}>
                                 日本語
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='en English' onClick={onClickChangeLanguage}>
                                 English
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                中文
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="zh-CN 中国人" onClick={onClickChangeLanguage}>
+                                中国人
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="ru Русский" onClick={onClickChangeLanguage}>
                                 Русский
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                عربي    
-                            </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
                                 Português
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
                                 Español
                             </a>
                         </div>
@@ -177,20 +174,17 @@ function Start() {
                             <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ko 한국어' onClick={onClickChangeLanguage}>
                                 한국어
                             </a>
-                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ja 일본어' onClick={onClickChangeLanguage}>
+                            <a className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ja 日本語' onClick={onClickChangeLanguage}>
                                 日本語
                             </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='en 영어' onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='en English' onClick={onClickChangeLanguage}>
                                 English
                             </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="zh-CN 중국어" onClick={onClickChangeLanguage}>
-                                中文
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="zh-CN 中国人" onClick={onClickChangeLanguage}>
+                                中国人
                             </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="ru 러시아어" onClick={onClickChangeLanguage}>
+                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="ru Русский" onClick={onClickChangeLanguage}>
                                 Русский
-                            </a>
-                            <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
-                                عربي    
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} onClick={onClickChangeLanguage}>
                                 Português

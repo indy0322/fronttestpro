@@ -5,6 +5,7 @@ import Test from './components/test';
 import Test2 from './components/test2';
 import Test3 from './components/test3';
 import Introduce from './components/introduce';
+import Introduce2 from './components/introduce2';
 import Review from './components/review';
 import Sangyong from './components/sangyong';
 import Start from './components/start';
@@ -28,7 +29,8 @@ function App() {
           <Route path='/login' element={<Login/>}></Route>
           <Route path="/sangyong" element={<Sangyong/>}></Route>
           <Route path="/test" element={<Test/>}></Route>
-          <Route path='/' element={<Introduce/>}></Route>
+          <Route path='/' element={<Introduce2/>}></Route>
+          <Route path='/:tourName' element={<Introduce/>}></Route>
           <Route path='/review/:tourId' element={<Review/>}></Route>
           <Route path="/test2" element={<Test2/>}></Route>
           <Route path="/test3" element={<Test3/>}></Route>
