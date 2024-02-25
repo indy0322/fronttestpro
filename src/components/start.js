@@ -94,7 +94,7 @@ function Start() {
                                 English
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="zh-CN 中国人" onClick={onClickChangeLanguage}>
-                                中国人
+                                中文
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="ru Русский" onClick={onClickChangeLanguage}>
                                 Русский
@@ -151,9 +151,9 @@ function Start() {
             {isMobile && <div style={{height:"100vh",background:"linear-gradient(lightCyan, skyBlue, deepSkyBlue)"}}>
                 <Translator
                     //cacheProvider={cacheProvider}
-                    /*from='ko'
+                    from='ko'
                     to={googleLang}
-                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
+                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}
                 >
                 <div className="logoImageContainer" style={{alignItems:"center",justifyContent:"center",display:"flex",paddingTop:"20vh",marginBottom:"25vw"}}>
                     <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
@@ -170,7 +170,7 @@ function Start() {
                         </button>
                     </div>
                     <div className="dropdown-menu" id="dropdown-menu3" role="menu" style={{width:"100%"}}>
-                        <div className="dropdown-content" style={{width:"25vw",height:"30vh",overflowY:"scroll"}}>
+                        <div className="dropdown-content" style={{width:"25vw",height:"20vh",overflowY:"scroll"}}>
                             <a href="#" class="dropdown-item" style={{width:"15vw",padding:"1vw"}} id='ko 한국어' onClick={onClickChangeLanguage}>
                                 한국어
                             </a>
@@ -181,7 +181,7 @@ function Start() {
                                 English
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="zh-CN 中国人" onClick={onClickChangeLanguage}>
-                                中国人
+                                中文
                             </a>
                             <a href="#" className="dropdown-item" style={{width:"15vw",padding:"1vw"}} id="ru Русский" onClick={onClickChangeLanguage}>
                                 Русский

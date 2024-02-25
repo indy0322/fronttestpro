@@ -3,16 +3,15 @@ import { GoogleMap, LoadScript, DirectionsService, DirectionsRenderer } from '@r
 
 const MapComponent = () => {
 
-    useEffect(async() => {
+    useEffect(() => {
         let lang = JSON.parse(localStorage.getItem('language'))
         console.log(lang.lang1)
         console.log(lang.lang2)
         
         setGoogleLang(lang.lang1)
-        
     },[])
 
-    const apiKey =''// process.env.REACT_APP_GOOGLEKEY;
+    const apiKey = ''//process.env.REACT_APP_GOOGLEKEY;
 
 
     const [lat,setLat] = useState()
@@ -20,10 +19,9 @@ const MapComponent = () => {
     const [googlelang, setGoogleLang] = useState()
     let languageCode = googlelang
 
-  navigator.geolocation.getCurrentPosition(async(position) => {
+  navigator.geolocation.getCurrentPosition((position) => {
     setLat(position.coords.latitude)
     setLng(position.coords.longitude)
-
     },(err) => {
         console.log(err)
     })
@@ -52,7 +50,6 @@ const MapComponent = () => {
         setDirections(result)
 
     }
-    
 
     //문제생길시 여기부터 고친다. 로컬스토리지에 language를 지웠다가 만들고 새로고침하는 부분이 문제임
     const Handle = async(e) => {

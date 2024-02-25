@@ -151,23 +151,23 @@ function Login() {
             {isMobile && <div>
                 <Translator
                     //cacheProvider={cacheProvider}
-                    /*from='ko'
+                    from='ko'
                     to={googleLang}
-                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
+                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}
                 >
                 <div className="container" style={{paddingTop:"30vh"}}>
                     <div className="emailPasswordContainer" style={{width:"90vw",margin:"5vw"}}>
                         <label className="label" style={{float:"left"}}><Translate>이메일</Translate></label>
-                        <input class="email input is-info" type="text" placeholder="Email" style={{marginBottom:"2vw"}}></input>
+                        <input class="email input is-info" type="text" style={{marginBottom:"2vw"}}></input>
                         <label className="label" style={{float:"left"}}><Translate>비밀번호</Translate></label>
-                        <input className="password input is-info" type="text" placeholder="Password" ></input>
+                        <input className="password input is-info" type="text" ></input>
                     </div>
                     <div class="buttons" style={{alignItems:"center",justifyContent:"center"}}>
                         <button className="button is-info"><Translate>로그인</Translate></button>
                         <button className="button is-success" onClick={modalOpen}><Translate>회원가입</Translate></button>
                     </div>
                 </div>
-                </Translator>
+                
 
                 <div className="bottomNav" style={{height:"10vh",width:"100vw",backgroundColor:"white",bottom:"0",position:"fixed",alignItems:"center",justifyContent:"center",display:"flex"}}>
                     <img type="button" src="/images/main.png" style={{width:"12vw",marginLeft:"3vw",marginRight:"3vw"}}></img>
@@ -178,8 +178,9 @@ function Login() {
 
 
                 <div className="languageContainerBtn langBtnClose" style={{zIndex:"1", backgroundColor: "rgba(0,0,0,0)",top:"40vh",right:"0", position:"fixed", width:"4vw",height:"8vh",transition: "width 0.5s"}}>
-                    <button className="languageBtn open button is-success" style={{color:"red", height:"8vh",width:"1vw",padding:"2vw",float:"left",writingMode:"vertical-rl",fontSize:"3vw"}} onClick={onClicklanguageBtn}>언어</button>
+                    <button className="languageBtn open button is-success" style={{color:"red", height:"8vh",width:"1vw",padding:"2vw",float:"left",writingMode:"vertical-rl",fontSize:"3vw"}} onClick={onClicklanguageBtn}><Translate>언어</Translate></button>
                 </div>
+                </Translator>
                 <div className="languageContainer" style={{zIndex:"2", backgroundColor:"white",top:"40vh",right:"0", position:"fixed", width:"0vw",height:"8vh",transition: "width 0.5s"}}>
 
                     <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>

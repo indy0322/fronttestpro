@@ -192,6 +192,7 @@ function Test() {
             <div>
                 <select onChange={handleChangeLang}>
                     <option value={'ko'}>한국</option>
+                    <option value={'en'}>영어</option>
                     <option value={"ja"}>일본</option>
                     <option value={"zh-CN"}>중국</option>
                     <option value={"ru"}>러시아</option>
@@ -216,6 +217,7 @@ function Test() {
             <div>
                 <select onChange={handleLang}>
                     <option value={'ko'}>한국어</option>
+                    <option value={'en'}>영어</option>
                     <option value={"ja"}>일본어</option>
                     <option value={"zh-CN"}>중국어</option>
                     <option value={"ru"}>러시아어</option>

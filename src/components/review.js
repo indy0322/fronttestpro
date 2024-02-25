@@ -34,7 +34,7 @@ function Review() {
 
     const onClickReviewRegister = () => {
         testService.reviewRegister({nickname:nickName, tourname:tourName, review:reviewContent})
-        navigate(-1)
+        //navigate(-1)
     }
 
     const onChangeReview = (e) => {

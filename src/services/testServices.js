@@ -65,7 +65,7 @@ class testService{
 
     async reviewRegister(data) {
         try{
-            return await axios.post(`/api/reviewregister`,data)
+            return await axios.post(`https://testpro-uktu.onrender.com/api/reviewregister`,data)
                 .then((res) => {
                     console.log(res)
                 })
@@ -74,6 +74,14 @@ class testService{
             console.log(err)
         }
         
+    }
+
+    async audioMp3(data){
+        return await axios.post('https://testpro-uktu.onrender.com/api/audio',data,{responseType:'blob'})
+            .then((res) => {
+                const audioObjectUrl = URL.createObjectURL(res.data)
+                return audioObjectUrl
+            })
     }
 }
 
