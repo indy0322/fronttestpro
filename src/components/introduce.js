@@ -112,7 +112,7 @@ function Introduce() {
     }
 
     const onClickReviewBtn = (e) => {
-        navigate("/review/경복궁")
+        window.location.href = "/review/경복궁"
     }
 
     const onClickBackBtn = (e) => {

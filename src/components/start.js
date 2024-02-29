@@ -151,17 +151,17 @@ function Start() {
             {isMobile && <div style={{height:"100vh",background:"linear-gradient(lightCyan, skyBlue, deepSkyBlue)"}}>
                 <Translator
                     //cacheProvider={cacheProvider}
-                    from='ko'
+                    /*from='ko'
                     to={googleLang}
-                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}
+                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
                 >
-                <div className="logoImageContainer" style={{alignItems:"center",justifyContent:"center",display:"flex",paddingTop:"20vh",marginBottom:"25vw"}}>
+                <div className="logoImageContainer" style={{alignItems:"center",justifyContent:"center",display:"flex",paddingTop:"15vh",marginBottom:"10vw"}}>
                     <img className="backBtn" type="button" style={{top:"2vw", left:"2vw",position:"fixed", width:"10vw"}} onClick={onClickBackBtn} src="/images/back.png"></img>
                     <figure className="image" style={{height:"20vh"}}>
                         <img style={{width:"50vw", height:"20vh"}} src="#"/>
                     </figure>
                 </div>
-                <p style={{fontSize:"4vw", margin:"5vw", fontWeight:"bold", color:"white"}}><Translate>사용할 언어를 선택해주세요</Translate></p>
+                <p style={{fontSize:"4vw", margin:"5vw", fontWeight:"bold",color:"white"}}><Translate>사용할 언어를 선택해주세요</Translate></p>
                 <div className="contentsLanguage languageOpen dropdown" style={{margin:"2vw"}}>
                     <div className="dropdown-trigger">
                         <button className="button is-info" aria-haspopup="true" aria-controls="dropdown-menu3" onClick={onClickContentLanguage}>
@@ -196,36 +196,37 @@ function Start() {
                     </div>
                 </div>
                 </Translator>
-                <div style={{marginTop:"4vh"}}>
+                {/*<div style={{marginTop:"4vh"}}>
                     <button className="button is-success" aria-haspopup="true" aria-controls="dropdown-menu3"><img src="/images/go.png" style={{height:"4vh"}}></img></button>
-                </div>
-                {/*<div className="emailPasswordContainer" style={{width:"90vw",margin:"5vw"}}>
-                    <label className="label" style={{float:"left"}}>이메일</label>
-                    <input class="email input is-info" type="text" placeholder="Email" style={{marginBottom:"2vw"}}></input>
-                    <label className="label" style={{float:"left"}}>비밀번호</label>
-                    <input className="password input is-info" type="text" placeholder="Password" ></input>
+                </div>*/}
+                <div className="emailPasswordContainer" style={{width:"90vw",margin:"5vw"}}>
+                    <label className="label" style={{float:"left",color:"white"}}>이메일</label>
+                    <input class="email input is-info" type="text" style={{marginBottom:"2vw"}}></input>
+                    <label className="label" style={{float:"left",color:"white"}}>비밀번호</label>
+                    <input className="password input is-info" type="text"></input>
                 </div>
                 <div class="buttons" style={{alignItems:"center",justifyContent:"center"}}>
-                    <button className="button is-info">로그인</button>
+                    <button className="button is-link">로그인</button>
                     <button className="button is-success" onClick={modalOpen}>회원가입</button>
-            </div>*/}
+                </div>
 
 
 
-                {/*<div className="modal">
+                <div className="modal">
                     <div className="modal-background modalBackground" onClick={modalClose}></div>
                     <div className="modal-content">
-                        <div className="box" style={{width:"90vw",margin:"5vw"}}>
-                            <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
-                    
-                            <label className="label" style={{float:"left"}}>이메일</label>
-                            <input class="email input is-info" type="text" placeholder="Email" style={{marginBottom:"2vw"}}></input>
-                            <label className="label" style={{float:"left"}}>비밀번호</label>
-                            <input className="password input is-info" type="text" placeholder="Password" style={{marginBottom:"2vw"}}></input>
-                            <label className="label" style={{float:"left"}}>인증번호</label>
-                            <div style={{float:"left"}}>
-                                <input className="password input is-danger" type="text" placeholder="Certifiacation" style={{marginBottom:"2vw",width:"40vw",float:"left"}}></input>
-                                <button className="registerBtn button is-danger" style={{float:"right",marginLeft:"1vw"}}>번호 발송</button>
+                        <div className="box" style={{width:"90vw",margin:"5vw", display:"flex", flexDirection:"column"}}>
+                            <div>
+                                <button class="delete deleteBtn" aria-label="close" style={{float:"right"}} onClick={modalClose}></button>
+                            </div>
+                            <label className="label" style={{textAlign:"left"}}>이메일</label>
+                            <input class="email input is-info" type="text" style={{marginBottom:"2vw"}}></input>
+                            <label className="label" style={{textAlign:"left"}}>비밀번호</label>
+                            <input className="password input is-info" type="text" style={{marginBottom:"2vw"}}></input>
+                            <label className="label" style={{textAlign:"left"}}>인증번호</label>
+                            <div>
+                                <input className="password input is-danger" type="text" style={{marginBottom:"2vw",width:"40vw",float:"left"}}></input>
+                                <button className="registerBtn button is-danger" style={{marginLeft:"1vw"}}>번호 발송</button>
                             </div>
                             <div>
                                 <button className="registerBtn button is-success" style={{marginTop:"2vw"}}>회원가입</button>
@@ -233,7 +234,7 @@ function Start() {
                             
                         </div>
                     </div>
-        </div>*/}
+                </div>
             </div>}
         </div>
     )

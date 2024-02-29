@@ -13,11 +13,11 @@ class testService{
     }
 
     nodetest(){
-        return axios.post(`https://testpro-uktu.onrender.com/api/nodetest`,{title: "fffff"})
+        return axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/nodetest`,{title: "fffff"})
     }
 
     async login(setToken,data){
-        return await axios.post(`https://testpro-uktu.onrender.com/api/login`, data)
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/login`, data)
                 .then((res) => {
                     console.log(res.data.token)
                     setToken(res.data.token)
@@ -26,7 +26,7 @@ class testService{
 
     async auth(option){
         try{
-            return await axios.get(`https://testpro-uktu.onrender.com/api/auth`,option)
+            return await axios.get(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/auth`,option)
                 .then((res) => {
                     console.log(res)
                 })
@@ -57,7 +57,7 @@ class testService{
     }
 
     async register(data) {
-        return await axios.post(`https://testpro-uktu.onrender.com/api/register`,data)
+        return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/register`,data)
             .then((res) => {
                 console.log(res)
             })
@@ -65,7 +65,7 @@ class testService{
 
     async reviewRegister(data) {
         try{
-            return await axios.post(`https://testpro-uktu.onrender.com/api/reviewregister`,data)
+            return await axios.post(`https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/reviewregister`,data)
                 .then((res) => {
                     console.log(res)
                 })
@@ -77,7 +77,7 @@ class testService{
     }
 
     async audioMp3(data){
-        return await axios.post('https://testpro-uktu.onrender.com/api/audio',data,{responseType:'blob'})
+        return await axios.post('https://port-0-testpro-17xco2nlt6nmnfk.sel5.cloudtype.app/api/audio',data,{responseType:'blob'})
             .then((res) => {
                 const audioObjectUrl = URL.createObjectURL(res.data)
                 return audioObjectUrl

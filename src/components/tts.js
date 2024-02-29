@@ -13,7 +13,7 @@ function Tts() {
 
     const Handle = async() => {
         const openai = new OpenAI({
-            apiKey: '',
+            apiKey: '',//process.env.CHATGPTKEY,
             dangerouslyAllowBrowser: true
         })
     

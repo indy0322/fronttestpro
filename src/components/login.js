@@ -151,9 +151,9 @@ function Login() {
             {isMobile && <div>
                 <Translator
                     //cacheProvider={cacheProvider}
-                    from='ko'
+                    /*from='ko'
                     to={googleLang}
-                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}
+                    googleApiKey={process.env.REACT_APP_GOOGLEKEY}*/
                 >
                 <div className="container" style={{paddingTop:"30vh"}}>
                     <div className="emailPasswordContainer" style={{width:"90vw",margin:"5vw"}}>
